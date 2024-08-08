@@ -20,6 +20,7 @@ class R2Point {
   R2Point(this.x, this.y);
   R2Point.zero() : x = 0.0, y = 0.0;
   double x, y;
+
   double operator [](int index) {
     switch (index) {
       case 0:
@@ -38,4 +39,17 @@ class R2Point {
   double get v {
     return y;
   }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! R2Point) return false;
+    return x == other.x && y == other.y;
+  }
+
+  @override
+  int get hashCode => x.hashCode ^ y.hashCode;
+
+  @override
+  String toString() => 'R2Point($x, $y)';
 }

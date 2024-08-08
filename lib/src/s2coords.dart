@@ -125,8 +125,8 @@ int getFace(S2Point p) {
 }
 
 class S2FaceUV {
-  int face;
-  R2Point uv;
+  late int face;
+  late R2Point uv;
   double get u { return uv.u; }
   double get v { return uv.v; }
 }
@@ -138,7 +138,7 @@ S2FaceUV xyzToFaceUV(S2Point p) {
   return res;
 }
 
-R2Point faceXYZtoUV(int face, S2Point p) {
+R2Point? faceXYZtoUV(int face, S2Point p) {
   if (face < 3) {
     if (p[face] <= 0) return null;
   } else {

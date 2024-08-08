@@ -49,17 +49,23 @@ class S1Angle {
 
   @override
   bool operator ==(Object other) {
-    S1Angle angle = other;
-    return _radians == angle._radians;
+    if (other is S1Angle) {
+      return _radians == other._radians;
+    }
+    return false;
   }
 
   bool operator <(Object other) {
-    S1Angle angle = other;
-    return _radians < angle._radians;
+    if (other is S1Angle) {
+      return _radians < other._radians;
+    }
+    return false;
   }
 
   bool operator >(Object other) {
-    S1Angle angle = other;
-    return _radians > angle._radians;
+    if (other is S1Angle) {
+      return _radians > other._radians;
+    }
+    return false;
   }
 }

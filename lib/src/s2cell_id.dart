@@ -160,7 +160,7 @@ class S2CellId {
   // func lsbForLevel(level int) uint64 { return 1 << uint64(2*(maxLevel-level)) }
 
   // Parent returns the cell at the given level, which must be no greater than the current level.
-  S2CellId parent([int level]) {
+  S2CellId parent([int level = 0]) {
     int lsb = _lsbForLevel(level == null ? this.level - 1 : level);
     return new S2CellId((_id & -lsb) | lsb);
   }
@@ -265,13 +265,13 @@ class S2CellId {
 
   @override
   bool operator ==(Object other) {
-    S2CellId cellId = other;
-    return _id == cellId._id;
+      S2CellId cellId = other as S2CellId;
+      return _id == cellId._id;
   }
 
   bool operator <(Object other) {
     // Unsigned comparison
-    S2CellId cellId = other;
+    S2CellId cellId = other as S2CellId;
     if (_id > 0 == cellId._id > 0) {
       return _id < cellId._id;
     }
@@ -280,7 +280,7 @@ class S2CellId {
 
   bool operator >(Object other) {
     // Unsigned comparison
-    S2CellId cellId = other;
+    S2CellId cellId = other as S2CellId;
     if (_id > 0 == cellId._id > 0) {
       return _id > cellId._id;
     }

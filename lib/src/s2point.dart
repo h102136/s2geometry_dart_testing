@@ -19,6 +19,7 @@
 class S2Point {
   S2Point(this.x, this.y, this.z);
   double x, y, z;
+
   double operator [](int index) {
     switch (index) {
       case 0:
@@ -42,4 +43,14 @@ class S2Point {
         ? temp[0] > temp[2] ? 0 : 2
         : temp[1] > temp[2] ? 1 : 2;
   }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    if (other is! S2Point) return false;
+    return x == other.x && y == other.y && z == other.z;
+  }
+
+  @override
+  int get hashCode => x.hashCode ^ y.hashCode ^ z.hashCode;
 }

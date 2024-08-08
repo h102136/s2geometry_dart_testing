@@ -46,7 +46,7 @@ class S2LatLng {
   R2Point _coords;
 
   bool get isValid {
-    return (lat.radians.abs() <= (pi * 2.0) && lng.radians.abs() <= pi);
+    return (lat.radians.abs() <= (pi / 2.0) && lng.radians.abs() <= pi);
   }
 
   S2Point toPoint() {
